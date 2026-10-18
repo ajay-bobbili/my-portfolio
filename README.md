@@ -32,9 +32,6 @@ Produces `public/hero/hero.{mp4,webm}` (looping, audio crossfaded sample-accurat
 Background whitening uses `colorlevels` at 0.90 on all channels (the source background measures 0.91-0.94 per channel/frame, so the specified 0.98 would not reach white).
 The hero video's left/right 8% is feathered to transparent with a CSS `mask-image` on `.hero-video` (Hero.tsx) so the floor-shadow crop edge never shows.
 
-## Notes
-- The updated CV now uses ajaybobbili7@gmail.com in both its text and its mailto link.
-- The MBA (BITS Pilani) and the Chennai location were supplied by the owner, not the CV.
 
 ## Logo credits
 `public/logos/*.svg` are devicon "original" icons (MIT, see `public/logos/LICENSE-devicon.txt`); trademarks belong to their owners. `lnrs.webp` (LexisNexis Risk Solutions) and `srm.webp` (SRM Institute of Science and Technology) were supplied by the site owner. Fonts (Inter Tight, Instrument Serif, JetBrains Mono; OFL) are self-hosted in `src/fonts` with licences.
