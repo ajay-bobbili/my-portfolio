@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, type AnimationEvent, type PointerEvent } from "react";
+import { Fragment, useRef, useState, type AnimationEvent, type PointerEvent } from "react";
 import { PROFILE } from "@/lib/data";
 import { scrollToTarget } from "@/lib/scroll";
 
@@ -12,15 +12,17 @@ function Letters({ text, accent = false }: { text: string; accent?: boolean }) {
   const done = (e: AnimationEvent<HTMLSpanElement>) => e.currentTarget.classList.remove("hop");
   return (
     <>
-      {text.split(" ").map((w, wi, arr) => (
-        <span key={wi} className="ct-word" aria-hidden="true">
-          {[...w].map((c, i) => (
-            <span key={i} className={`ct-l${accent ? " accent" : ""}`} onPointerEnter={hop} onAnimationEnd={done}>
-              {c}
-            </span>
-          ))}
-          {wi < arr.length - 1 ? " " : ""}
-        </span>
+      {text.split(" ").map((w, wi) => (
+        <Fragment key={wi}>
+          {wi > 0 ? " " : ""}
+          <span className="ct-word" aria-hidden="true">
+            {[...w].map((c, i) => (
+              <span key={i} className={`ct-l${accent ? " accent" : ""}`} onPointerEnter={hop} onAnimationEnd={done}>
+                {c}
+              </span>
+            ))}
+          </span>
+        </Fragment>
       ))}
     </>
   );
