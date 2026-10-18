@@ -1,0 +1,1 @@
+Logos in this folder (*.svg) are from the devicon project (https://devicon.dev, MIT licence, see LICENSE-devicon.txt). Each logo is a trademark of its respective owner and is used here only to identify the technology. lnrs.webp (LexisNexis Risk Solutions) and srm.webp (SRM Institute of Science and Technology) were supplied by the site owner.

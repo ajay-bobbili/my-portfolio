@@ -1,0 +1,38 @@
+import { asset } from "@/lib/asset";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { PROFILE } from "@/lib/data";
+import "./globals.css";
+
+const interTight = localFont({
+  src: "../fonts/InterTight-Variable.woff2",
+  variable: "--f-sans",
+  weight: "100 900",
+  display: "swap",
+});
+const title = `${PROFILE.name} | Site Reliability Engineer`;
+const description = `${PROFILE.name} - ${PROFILE.role} at ${PROFILE.company}. Portfolio: skills, projects, certifications, experience and achievements.`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/`),
+  title,
+  description,
+  icons: { icon: [{ url: asset("/favicon.ico") }, { url: asset("/icon.png"), type: "image/png" }], apple: asset("/icon.png") },
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: `${PROFILE.name}, ${PROFILE.role}` }],
+  },
+  twitter: { card: "summary_large_image", title, description, images: ["/og.jpg"] },
+};
+
+export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={interTight.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
