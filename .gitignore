@@ -5,3 +5,4 @@ next-env.d.ts
 Gemini_Generated_Image_*.png
 /cv.pdf
 /lnrs logo.jpg
+out
