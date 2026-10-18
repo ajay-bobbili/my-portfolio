@@ -24,6 +24,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Add private portrait (kept out of the repo)
+        env:
+          PORTRAIT_B64: ${{ secrets.PORTRAIT_B64 }}
+        run: |
+          test -n "$PORTRAIT_B64" || { echo "Missing PORTRAIT_B64 secret"; exit 1; }
+          echo "$PORTRAIT_B64" | base64 -d > public/portrait-bust.webp
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://ajay-bobbili.github.io
