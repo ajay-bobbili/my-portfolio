@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { asset } from "@/lib/asset";
 
 /** Brand logos: key -> file in /public/logos (devicon "original" SVGs, MIT; lnrs/srm supplied by owner). */
 export const BRAND: Record<string, string> = {
@@ -87,7 +88,7 @@ export default function TechLogo({ name, size = 40, label, className = "" }: Pro
   if (isBrand(name)) {
     return (
       <img
-        src={BRAND[name]}
+        src={asset(BRAND[name])}
         alt={label ?? ""}
         width={size}
         height={size}

@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://ajay-bobbili.github.io
+          NEXT_PUBLIC_BASE_PATH: /my-portfolio
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

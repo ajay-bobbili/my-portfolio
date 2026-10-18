@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { PROFILE } from "@/lib/data";
 import { prefersReducedMotion } from "@/lib/hooks";
 import { scrollToTarget } from "@/lib/scroll";
+import { asset } from "@/lib/asset";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
@@ -101,8 +102,8 @@ export default function Hero() {
             preload="auto"
             aria-label={`Animated portrait of ${PROFILE.name} introducing himself`}
           >
-            <source src="/hero/hero.webm" type="video/webm" />
-            <source src="/hero/hero.mp4" type="video/mp4" />
+            <source src={asset("/hero/hero.webm")} type="video/webm" />
+            <source src={asset("/hero/hero.mp4")} type="video/mp4" />
           </video>
           <button
             type="button"

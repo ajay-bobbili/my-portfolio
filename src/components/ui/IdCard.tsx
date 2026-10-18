@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { PROFILE } from "@/lib/data";
 import { prefersReducedMotion } from "@/lib/hooks";
 
@@ -135,7 +136,7 @@ export default function IdCard() {
               <div className="idc-photo">
                 <div className="idc-halo" />
                 <div className="idc-ring">
-                  <Image src="/portrait-bust.webp" alt={`Portrait of ${PROFILE.name}`} width={120} height={150} sizes="120px" priority={false} />
+                  <Image src={asset("/portrait-bust.webp")} alt={`Portrait of ${PROFILE.name}`} width={120} height={150} sizes="120px" priority={false} />
                 </div>
               </div>
               <p className="idc-name">{PROFILE.name}</p>

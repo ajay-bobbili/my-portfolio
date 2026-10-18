@@ -1,6 +1,8 @@
 /* Single source of truth for all site content. Every fact comes from the CV (cv.pdf),
    except the MBA at BITS Pilani and the Chennai location, which were supplied by the site owner. */
 
+import { asset } from "./asset";
+
 export const PROFILE = {
   name: "Ajay B",
   firstName: "Ajay",
@@ -16,7 +18,7 @@ export const PROFILE = {
   phoneHref: "tel:+919384106137",
   github: "https://github.com/ajaysrinic/",
   linkedin: "https://www.linkedin.com/in/ajaysrinic/",
-  resume: "/cv.pdf",
+  resume: asset("/cv.pdf"),
   resumeSummary:
     "Systems Engineer III (SRE) at LexisNexis Risk Solutions, building GitHub Actions CI/CD, OpenTelemetry observability and cloud automation. Previously a DevOps Engineer at TCS, running Linux production servers and Azure environments. Holds a PG Diploma in Advanced Cloud Computing and DevOps from IIT Roorkee and is pursuing an MBA in Business Analytics at BITS Pilani.",
 } as const;

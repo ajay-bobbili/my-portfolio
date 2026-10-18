@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { PROFILE } from "@/lib/data";
@@ -28,10 +29,10 @@ const title = `${PROFILE.name} | Site Reliability Engineer`;
 const description = `${PROFILE.name} - ${PROFILE.role} at ${PROFILE.company}. Portfolio: skills, projects, certifications, experience and achievements.`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/`),
   title,
   description,
-  icons: { icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png" }], apple: "/icon.png" },
+  icons: { icon: [{ url: asset("/favicon.ico") }, { url: asset("/icon.png"), type: "image/png" }], apple: asset("/icon.png") },
   openGraph: {
     title,
     description,
