@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TechLogo from "@/components/ui/TechLogo";
 import { PROJECTS, type Project } from "@/lib/data";
@@ -45,6 +45,15 @@ function Visual({ kind }: { kind: Project["visual"] }) {
 
 export default function Work() {
   const [open, setOpen] = useState(0);
+  // Below 900px the panels are a vertical accordion: tapping toggles. On desktop, hover/focus opens a panel.
+  const [stacked, setStacked] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 899px)");
+    const sync = () => setStacked(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
   return (
     <section id="work" className="section" aria-labelledby="work-heading">
       <style>{css}</style>
@@ -58,7 +67,7 @@ export default function Work() {
                 key={p.id}
                 role="listitem"
                 className={`wk-panel${isOpen ? " is-open" : ""}`}
-                onMouseEnter={() => setOpen(i)}
+                onMouseEnter={() => { if (!stacked) setOpen(i); }}
                 aria-labelledby={`wk-t-${p.id}`}
               >
                 <button
@@ -66,9 +75,9 @@ export default function Work() {
                   className="wk-spine"
                   aria-expanded={isOpen}
                   aria-controls={`wk-b-${p.id}`}
-                  onFocus={() => setOpen(i)}
-                  onClick={() => setOpen(i)}
-                  tabIndex={isOpen ? -1 : 0}
+                  onFocus={() => { if (!stacked) setOpen(i); }}
+                  onClick={() => setOpen((cur) => (stacked && cur === i ? -1 : i))}
+                  tabIndex={isOpen && !stacked ? -1 : 0}
                 >
                   <span className="wk-sn mono">{p.number}</span>
                   <span className="wk-st">{p.title}</span>
